@@ -13,10 +13,14 @@ var detectNetwork = function(cardNumber) {
   var cardLength = cardNumber.length;
   var cardPrefix = cardNumber.slice(0,2);
 
-  if (cardPrefix === '38' || cardPrefix === '39' && cardLength === 14){
+  if (cardPrefix === "38" || cardPrefix === "39" && cardLength === 14){
     return "Diner\'s Club"
-  } else if (cardPrefix === '34' || cardPrefix === '37' && cardLength === 15){
+  } else if (cardPrefix === "34" || cardPrefix === "37" && cardLength === 15){
     return "American Express"
+  } else if (cardPrefix.charAt(0) === '4' && [13, 16, 19].indexOf(cardLength) > -1) {
+    return "Visa"
+  } else if (["51", "52", "53", "54", "55"].indexOf(cardPrefix) > -1 && cardLength === 16) {
+    return "MasterCard"
   } else {
     return "Error: card does not match Diner\'s Club or American Express Networks"
   }

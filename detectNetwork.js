@@ -11,19 +11,29 @@ var detectNetwork = function(cardNumber) {
   //cardNumber =  cardNumber.toString();
 
   var cardLength = cardNumber.length;
-  var cardPrefix = cardNumber.slice(0,2);
+  var cardPrefix = cardNumber.slice(0,4);
+  var codeOfOne = cardPrefix.charAt(0)
+  var codeOfTwo = codeOfOne + cardPrefix.charAt(1);
+  var codeOfThree = codeOfTwo + cardPrefix.charAt(2);
 
-  if (cardPrefix === "38" || cardPrefix === "39" && cardLength === 14){
+  if (codeOfTwo === "38" || codeOfTwo === "39" && cardLength === 14){
     return "Diner\'s Club"
-  } else if (cardPrefix === "34" || cardPrefix === "37" && cardLength === 15){
+  } else if (codeOfTwo === "34" || codeOfTwo === "37" && cardLength === 15){
     return "American Express"
-  } else if (cardPrefix.charAt(0) === '4' && [13, 16, 19].indexOf(cardLength) > -1) {
+  } else if (codeOfOne === '4' && [13, 16, 19].indexOf(cardLength) > -1) {
     return "Visa"
-  } else if (["51", "52", "53", "54", "55"].indexOf(cardPrefix) > -1 && cardLength === 16) {
+  } else if (["51", "52", "53", "54", "55"].indexOf(codeOfTwo) > -1 && cardLength === 16) {
     return "MasterCard"
-  } else {
-    return "Error: card does not match Diner\'s Club or American Express Networks"
+  } else if(cardPrefix === "6011" || codeOfTwo === "65" || ["644", "645", "646", "647", "648", "649"].indexOf(codeOfTwo) > -1 && [16, 19].indexOf(cardLength) > -1){
+    return "Discover"
+  } else if (["5018", "5020", "5038", "6304"].indexOf(cardPrefix) && [12,13,14,15,16,17,18,19].indexOf(cardLength) > -1) {
+    return "Maestro"
+  }else {
+    return "Error: card does not match Diner\'s Club, American Express, Visa, MasterCard, Discover, or Maestro"
   }
+
+
+
   // Note: `cardNumber` will always be a string
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
   // The American Express network always starts with a 34 or 37 and is 15 digits long

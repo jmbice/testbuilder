@@ -24,7 +24,7 @@ var detectNetwork = function(cardNumber) {
     return "Visa"
   } else if (["51", "52", "53", "54", "55"].indexOf(codeOfTwo) > -1 && cardLength === 16) {
     return "MasterCard"
-  } else if(cardPrefix === "6011" || codeOfTwo === "65" || ["644", "645", "646", "647", "648", "649"].indexOf(codeOfTwo) > -1 && [16, 19].indexOf(cardLength) > -1){
+  } else if(cardPrefix === "6011" || codeOfTwo === "65" || ["644", "645", "646", "647", "648", "649"].indexOf(codeOfThree) > -1 && [16, 19].indexOf(cardLength) > -1) {
     return "Discover"
   } else if (["5018", "5020", "5038", "6304"].indexOf(cardPrefix) > -1 && [12,13,14,15,16,17,18,19].indexOf(cardLength) > -1) {
     return "Maestro"

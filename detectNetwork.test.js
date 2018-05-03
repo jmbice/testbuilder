@@ -83,19 +83,6 @@ describe('Visa', function() {
   // Search the documentation to figure out how to access it.
   //   http://chaijs.com/
   var assert = chai.assert;
-
-  //
-  // var assert = require('chai').assert
-  //   , foo = 'bar'
-  //   , beverages = { tea: [ 'chai', 'matcha', 'oolong' ] };
-  //
-  //assert.typeOf(foo, 'string'); // without optional message
-  // assert.typeOf(foo, 'string', 'foo is a string'); // with optional message
-  // assert.equal(foo, 'bar', 'foo equal `bar`');
-  // assert.lengthOf(it, 13, 'foo`s value has a length of 13');
-  // assert.lengthOf(beverages.tea, 3, 'beverages has 3 types of tea');
-
-
   it('has a prefix of 4 and a length of 13', function() {
     assert(detectNetwork('4123456789012') === 'Visa');
   });
@@ -149,8 +136,6 @@ describe('MasterCard', function() {
 });
 
 describe('Discover', function() {
-  // Tests without a function will be marked as "pending" and not run
-  // Implement these tests (and others) and make them pass!
   it('has a prefix of 6011 and a length of 16', function(){
     detectNetwork('6011123456789101').should.equal('Discover')
   });
@@ -203,7 +188,6 @@ describe('Maestro', function() {
     })(length)
   }
 });
-
 
 // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
 describe('China UnionPay', function() {
@@ -303,23 +287,3 @@ describe('Switch', function() {
     });
 
 });
-
-
-//
-
-//
-// // for (var prefix = 622126; prefix <= 622925; prefix++) {
-// //   (function(prefix) {
-// //     it('has a prefix of' + prefix + ' and a length of 16', function(){
-// //       detectNetwork(prefix + '0000000000').should.equal('Switch')
-// //     });
-// //
-// //     it('has a prefix of' + prefix + ' and a length of 18', function(){
-// //       detectNetwork(prefix + '000000000000').should.equal('Switch')
-// //     });
-// //
-// //     it('has a prefix of' + prefix + ' and a length of 19', function(){
-// //       detectNetwork(prefix + '0000000000000').should.equal('Switch')
-// //     });
-// //   })(prefix)
-// // }

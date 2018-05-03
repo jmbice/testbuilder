@@ -152,53 +152,53 @@ describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
   it('has a prefix of 6011 and a length of 16', function(){
-    detectNetwork(6011123456789101).should.equal('Discover')
+    detectNetwork('6011123456789101').should.equal('Discover')
   });
   it('has a prefix of 6011 and a length of 19'), function(){
-    detectNetwork(6011123456789101112).should.equal('Discover')
+    detectNetwork('6011123456789101112').should.equal('Discover')
   };
 });
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
   it('has a prefix of 5018 and a length between 12-19', function(){
-    detectNetwork(501812345678).should.equal('Maestro')
+    detectNetwork('501812345678').should.equal('Maestro')
   });
   it('has a prefix of 5018 and a length between 12-19', function(){
-    detectNetwork(501812345678910111).should.equal('Maestro')
+    detectNetwork('501812345678910111').should.equal('Maestro')
   });
   it('has a prefix of 5018 and a length between 12-19', function(){
-    detectNetwork(5018123456789101).should.equal('Maestro')
+    detectNetwork('5018123456789101').should.equal('Maestro')
   });
   it('has a prefix of 5020 and a length between 12-19', function(){
-    detectNetwork(50201234567893).should.equal('Maestro')
+    detectNetwork('50201234567893').should.equal('Maestro')
   });
   it('has a prefix of 5020 and a length between 12-19', function(){
-    detectNetwork(502012345678).should.equal('Maestro')
+    detectNetwork('502012345678').should.equal('Maestro')
   });
   it('has a prefix of 5020 and a length between 12-19', function(){
-    detectNetwork(5020123456789).should.equal('Maestro')
+    detectNetwork('5020123456789').should.equal('Maestro')
   });
   it('has a prefix of 5038 and a length between 12-19', function(){
-    detectNetwork(50381234567891).should.equal('Maestro')
+    detectNetwork('50381234567891').should.equal('Maestro')
   });
   it('has a prefix of 5038 and a length between 12-19', function(){
-    detectNetwork(503812345678910).should.equal('Maestro')
+    detectNetwork('503812345678910').should.equal('Maestro')
   });
   it('has a prefix of 5038 and a length between 12-19', function(){
-    detectNetwork(5038123456789101).should.equal('Maestro')
+    detectNetwork('5038123456789101').should.equal('Maestro')
   });
   it('has a prefix of 6304 and a length between 12-19', function(){
-    detectNetwork(6304112345678910).should.equal('Maestro')
+    detectNetwork('6304112345678910').should.equal('Maestro')
   });
   it('has a prefix of 6304 and a length between 12-19', function(){
-    detectNetwork(6304112345678910111).should.equal('Maestro')
+    detectNetwork('6304112345678910111').should.equal('Maestro')
   });
   it('has a prefix of 6304 and a length between 12-19', function(){
-    detectNetwork(630411234567891011).should.equal('Maestro')
+    detectNetwork('630411234567891011').should.equal('Maestro')
   });
   it('has a prefix of 6304 and a length between 12-19', function(){
-    detectNetwork(63041123456789101).should.equal('Maestro')
+    detectNetwork('63041123456789101').should.equal('Maestro')
   });
 });
 

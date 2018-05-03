@@ -8,8 +8,7 @@
 //   2. The number of digits in the number (called the length)
 
 var detectNetwork = function(cardNumber) {
-  //cardNumber =  cardNumber.toString();
-
+  
   var cardLength = cardNumber.length;
   var cardPrefix = cardNumber.slice(0,6);
   var codeOfOne = cardPrefix.charAt(0)
@@ -36,16 +35,4 @@ var detectNetwork = function(cardNumber) {
   }else {
     return "Error: card does not match Diner\'s Club, American Express, Visa, MasterCard, Discover, or Maestro"
   }
-
-
-// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
-// 564182, 633110
-
-// China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
-
-  // Note: `cardNumber` will always be a string
-  // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
-  // The American Express network always starts with a 34 or 37 and is 15 digits long
-
-  // Once you've read this, go ahead and try to implement this function, then return to the console.
 };

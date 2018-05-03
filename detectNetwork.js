@@ -26,7 +26,7 @@ var detectNetwork = function(cardNumber) {
     return "MasterCard"
   } else if(cardPrefix === "6011" || codeOfTwo === "65" || ["644", "645", "646", "647", "648", "649"].indexOf(codeOfTwo) > -1 && [16, 19].indexOf(cardLength) > -1){
     return "Discover"
-  } else if (["5018", "5020", "5038", "6304"].indexOf(cardPrefix) && [12,13,14,15,16,17,18,19].indexOf(cardLength) > -1) {
+  } else if (["5018", "5020", "5038", "6304"].indexOf(cardPrefix) > -1 && [12,13,14,15,16,17,18,19].indexOf(cardLength) > -1) {
     return "Maestro"
   }else {
     return "Error: card does not match Diner\'s Club, American Express, Visa, MasterCard, Discover, or Maestro"

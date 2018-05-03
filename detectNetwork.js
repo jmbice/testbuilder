@@ -11,28 +11,37 @@ var detectNetwork = function(cardNumber) {
   //cardNumber =  cardNumber.toString();
 
   var cardLength = cardNumber.length;
-  var cardPrefix = cardNumber.slice(0,4);
+  var cardPrefix = cardNumber.slice(0,6);
   var codeOfOne = cardPrefix.charAt(0)
   var codeOfTwo = codeOfOne + cardPrefix.charAt(1);
   var codeOfThree = codeOfTwo + cardPrefix.charAt(2);
+  var codeOfFour = codeOfThree + cardPrefix.charAt(3);
 
   if (codeOfTwo === "38" || codeOfTwo === "39" && cardLength === 14){
     return "Diner\'s Club"
+  } else if (["4903", "4905", "4911", "4936", "6333", "6759"].indexOf(codeOfFour) > -1 || ["564182", "633110"].indexOf(cardPrefix) > -1 && [16,18,19].indexOf(cardLength) > -1) {
+    return "Switch"
   } else if (codeOfTwo === "34" || codeOfTwo === "37" && cardLength === 15){
     return "American Express"
-  } else if (codeOfOne === '4' && [13, 16, 19].indexOf(cardLength) > -1) {
+  } else if (codeOfOne === "4" && [13, 16, 19].indexOf(cardLength) > -1) {
     return "Visa"
   } else if (["51", "52", "53", "54", "55"].indexOf(codeOfTwo) > -1 && cardLength === 16) {
     return "MasterCard"
-  } else if(cardPrefix === "6011" || codeOfTwo === "65" || ["644", "645", "646", "647", "648", "649"].indexOf(codeOfThree) > -1 && [16, 19].indexOf(cardLength) > -1) {
+  } else if(codeOfFour === "6011" || codeOfTwo === "65" || ["644", "645", "646", "647", "648", "649"].indexOf(codeOfThree) > -1 && [16, 19].indexOf(cardLength) > -1) {
     return "Discover"
-  } else if (["5018", "5020", "5038", "6304"].indexOf(cardPrefix) > -1 && [12,13,14,15,16,17,18,19].indexOf(cardLength) > -1) {
+  } else if (["5018", "5020", "5038", "6304"].indexOf(codeOfFour) > -1 && [12,13,14,15,16,17,18,19].indexOf(cardLength) > -1) {
     return "Maestro"
+  } else if ((Number(codeOfFour) >= 6282 && Number(codeOfFour) <= 6288)|| (Number(cardPrefix) >= 622126 && Number(cardPrefix) <= 622925) || (Number(codeOfThree) >= 624 && Number(codeOfThree) <= 626) && [16,17,18,19].indexOf(cardLength) > -1 ) {
+    return "China UnionPay"
   }else {
     return "Error: card does not match Diner\'s Club, American Express, Visa, MasterCard, Discover, or Maestro"
   }
 
 
+// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
+// 564182, 633110
+
+// China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
 
   // Note: `cardNumber` will always be a string
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
